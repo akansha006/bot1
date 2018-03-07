@@ -17,16 +17,8 @@ app.use(bodyParser.urlencoded({
 
 // Process application/json
 app.use(bodyParser.json())
+const token= 'EAAFu5WrmgVIBACb1nVHERKBr5Qvw5rZBUSFz17skvpfpLDnfyZClYs29MlFt51WkIkS2wjrlEbjfZBubYmImmii2XV9k5WUwFgQZB0DRaHVJ97NKpZAjaS83ZARybXhrsJCkRRlONeq88IOAUPZA2bRnrguEO6UiJFArF2ZAUmJ0tQZDZD';
 
-//DB
-
-var conString = process.env.DATABASE_URL;
-var client = new pg.Client(conString);
-client.connect();
-
-client.query("CREATE TABLE IF NOT EXISTS PNR(UserID varchar(100), firstname varchar(100), pnr varchar(100))");
-
-const token = process.env.FB_PAGE_ACCESS_TOKEN
 
 // Index route
 app.get('/', function(req, res) {
@@ -39,7 +31,7 @@ app.get('/privacy-policy', function(req, res) {
 
 // for Facebook verification
 app.get('/webhook/', function(req, res) {
-    if (req.query['hub.verify_token'] === process.env.VERIFY_TOKEN) {
+    if (req.query['hub.verify_token'] === 'hello') {
         res.send(req.query['hub.challenge'])
     }
     res.send('Error, wrong token')
