@@ -4,8 +4,6 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
 const app = express()
-var pg = require("pg");
-var path = require("path");
 
 
 app.set('port', (process.env.PORT || 5000))
